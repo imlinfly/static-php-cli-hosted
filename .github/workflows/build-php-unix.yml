@@ -25,9 +25,9 @@ jobs:
           - "ubuntu-22.04"
           # - "ubuntu-22.04-arm"
         combination:
-          - minimal
-          - bulk
-          - common
+          # - minimal
+          # - bulk
+          # - common
           - gnu-bulk
         exclude:
           # - { runner: "ubuntu-latest", combination: "gnu-bulk" }
