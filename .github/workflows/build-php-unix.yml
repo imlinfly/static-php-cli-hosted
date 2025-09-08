@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-release-artifacts:
-    name: "Build ${{ matrix.php-version }}-${{ matrix.combination }} on ${{ matrix.runner }}"
+    name: "Build ${{ matrix.php-version }}-${{ matrix.combination }}-${{ matrix.build-type }} on ${{ matrix.runner }}"
     runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
