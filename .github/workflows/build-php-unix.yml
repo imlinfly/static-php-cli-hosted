@@ -101,10 +101,10 @@ jobs:
           esac
       
       - name: "Checkout remote"
-        if: github.repository != 'crazywhalecc/static-php-cli'
+        if: github.repository != 'imlinfly/static-php-cli'
         uses: actions/checkout@v4
         with:
-          repository: crazywhalecc/static-php-cli
+          repository: imlinfly/static-php-cli
           ref: main
 
       - name: "Setup PHP"
