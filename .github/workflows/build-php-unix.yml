@@ -54,7 +54,7 @@ jobs:
               echo "SUGGEST=--with-suggested-libs" >> "$GITHUB_OUTPUT"
               ;;
             bulk|gnu-bulk)    
-              echo "EXTENSIONS=apcu,bcmath,bz2,calendar,ctype,curl,dba,dom,event,exif,fileinfo,filter,ftp,gd,gmp,iconv,imagick,imap,intl,mbregex,mbstring,mysqli,mysqlnd,opcache,openssl,opentelemetry,pcntl,pdo,pdo_mysql,pgsql,phar,posix,protobuf,readline,redis,session,shmop,simplexml,soap,sockets,sodium,sqlite3,swoole,swoole-hook-mysql,swoole-hook-pgsql,swoole-hook-sqlite,sysvmsg,sysvsem,sysvshm,tokenizer,xml,xmlreader,xmlwriter,xsl,zip,zlib" >> "$GITHUB_OUTPUT"
+              echo "EXTENSIONS=apcu,bcmath,bz2,calendar,Core,ctype,curl,dba,dom,event,exif,fileinfo,filter,ftp,gd,gmp,hash,iconv,imagick,imap,intl,json,libxml,mbstring,mysqli,mysqlnd,opcache,openssl,pcntl,pcre,PDO,pdo_mysql,pgsql,Phar,posix,protobuf,readline,redis,Reflection,session,shmop,SimpleXML,soap,sockets,sodium,SPL,sqlite3,standard,swoole,sysvmsg,sysvsem,sysvshm,tokenizer,xml,xmlreader,xmlwriter,xsl,ZendOPcache,zip,zlib,zstd" >> "$GITHUB_OUTPUT"
               echo "SUGGEST=--with-suggested-libs" >> "$GITHUB_OUTPUT"
               ;;
           esac
@@ -148,7 +148,7 @@ jobs:
             UPX=--with-upx-pack
           fi
           
-          ${{ steps.process-env.outputs.CMD }} build --build-cli --build-micro --build-fpm ${{ steps.process-env.outputs.EXTENSIONS }} --debug $UPX ${{ steps.process-env.outputs.SUGGEST }}
+          ${{ steps.process-env.outputs.CMD }} build --build-cli --build-micro --build-fpm -I date.timezone='Asia/Shanghai' -I memory_limit=4G -I swoole.use_shortname='Off' ${{ steps.process-env.outputs.EXTENSIONS }} --debug $UPX ${{ steps.process-env.outputs.SUGGEST }}
 
           # Copy out from buildroot, because docker build has different permission
           mkdir -p tmp_dist/
